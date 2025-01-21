@@ -8,7 +8,7 @@ import { UserModule } from './user/user.module'
 import { ArticleModule } from './article/article.module'
 import { CommentModule } from './comment/comment.module'
 import { AuthModule } from './auth/auth.module'
-
+// DATABASE_URL
 @Module({
     imports: [
         ConfigModule.forRoot({

@@ -5,6 +5,11 @@ import { HttpExceptionFilter } from './common/filters/http-exception.filter'
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)
     app.setGlobalPrefix('api')
+    app.enableCors({
+        origin: true, // 允许所有域名访问，或者指定前端域名，例如 ['https://your-frontend.com']
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // 允许的 HTTP 方法
+        credentials: true, // 允许发送 Cookie
+    })
     app.useGlobalInterceptors(new ResponseInterceptor()) // 全局注册拦截器
     app.useGlobalFilters(new HttpExceptionFilter()) // 全局注册异常过滤器
     // 监听动态端口

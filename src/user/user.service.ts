@@ -18,8 +18,6 @@ export class UserService {
         const clientSecret = this.configService.get<string>(
             'GITHUB_CLIENT_SECRET'
         )
-        console.log(code, clientId, clientSecret, '111111111111111111')
-
         const { data } = await axios.post(
             'https://github.com/login/oauth/access_token',
             {
@@ -33,10 +31,7 @@ export class UserService {
                 },
             }
         )
-
         const accessToken = data.access_token
-        console.log(accessToken, '22222222222222222222222222')
-
         const { data: githubUser } = await axios.get(
             'https://api.github.com/user',
             {

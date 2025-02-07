@@ -9,7 +9,7 @@ import { JwtStrategy } from './jwt.strategy'
     imports: [
         PassportModule.register({ defaultStrategy: 'jwt' }),
         JwtModule.register({
-            secret: 'secret',
+            secret: process.env.JWT_SECRET || 'default_secret',
             signOptions: { expiresIn: '24h' },
         }),
         forwardRef(() => UserModule), // 使用 forwardRef 解决循环依赖
